@@ -1,0 +1,7 @@
+/* TuComponente.css */
+.contenedor-con-fondo {
+  background-image: url('./assets/Img/f.jpg'); /* Asegúrate de ajustar la ruta al archivo de imagen */
+  background-size: cover; /* Otra propiedad para ajustar la forma en que la imagen se ajusta al contenedor */
+
+  /* Otras propiedades de estilo, como colores de texto y márgenes */
+}
