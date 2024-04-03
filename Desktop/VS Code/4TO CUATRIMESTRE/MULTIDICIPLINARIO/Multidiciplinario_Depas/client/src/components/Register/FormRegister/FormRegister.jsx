@@ -1,14 +1,15 @@
 import { Card, Message, Button, Input, Label } from "../../UI";
 import { useAuth } from "../../../context/authContext";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../../../schemas/auth";
 import logo from '../../../assets/Img/Logo.png';
 import { Link, useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'; 
 
 function FormRegister (){
-    const { signup, errors: registerErrors } = useAuth();
+   
   const {
     register,
     handleSubmit,
@@ -16,11 +17,23 @@ function FormRegister (){
   } = useForm({
     resolver: zodResolver(registerSchema),
   });
+  const { signup, errors: registerErrors, isAuthenticated  } = useAuth();
+  const navigate = useNavigate ();
 
-
-  const onSubmit = async (value) => {
-    await signup(value);
+  const onSubmit = (data) => {
+    signup(data);
+    Swal.fire({
+      icon: 'success',
+      title: '¡Éxito!',
+      text: 'Te has registrado exitosamente!',
+    });
   };
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/home");
+    }
+  }, [isAuthenticated]);
 
   
     return(
@@ -36,9 +49,10 @@ function FormRegister (){
          </div>
 
         <h1 className="text-3xl font-bold text-white  ">Register</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="username">Username</Label>
           <Input
+           className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
             type="text"
             name="username"
             placeholder="Username"
@@ -51,6 +65,7 @@ function FormRegister (){
 
           <Label htmlFor="email">Email</Label>
           <Input
+           className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
             name="email"
             placeholder="email@gmail.com"
             {...register("email")}
@@ -61,6 +76,7 @@ function FormRegister (){
 
           <Label htmlFor="password">Password</Label>
           <Input
+            className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
             type="password"
             name="password"
             placeholder="********"
@@ -72,6 +88,7 @@ function FormRegister (){
 
           <Label htmlFor="confirmPassword">Confirm Password</Label>
           <Input
+            className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
             type="password"
             name="confirmPassword"
             placeholder="********"
@@ -80,13 +97,13 @@ function FormRegister (){
           {errors.confirmPassword?.message && (
             <p className="text-red-500">{errors.confirmPassword?.message}</p>
           )}
-          <div className="text-white">
+          <div className="text-white text-right m-1">
          <Button  >Register</Button>
           </div>
 
-          <p className="mt-10 text-center text-sm text-gray-50">
+          <p className="mt-5 text-center text-sm text-gray-50">
                 Ya tienes una cuenta?{' '}
-                <Link to='/' className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+                <Link to='/login' className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
                   Iniciar Sesion!!
                 </Link>
           </p>
@@ -100,4 +117,4 @@ function FormRegister (){
     )
 }
 
-export default FormRegister
+export default FormRegister;

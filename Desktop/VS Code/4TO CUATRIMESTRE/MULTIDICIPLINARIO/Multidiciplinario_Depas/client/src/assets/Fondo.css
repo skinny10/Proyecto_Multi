@@ -1,7 +1,13 @@
 /* TuComponente.css */
-.contenedor-con-fondo {
-  background-image: url('./assets/Img/f.jpg'); /* Asegúrate de ajustar la ruta al archivo de imagen */
+.content-form {
+  margin-top: 0px;
+  background-image: url('./Img/fondo.png'); /* Asegúrate de ajustar la ruta al archivo de imagen */
   background-size: cover; /* Otra propiedad para ajustar la forma en que la imagen se ajusta al contenedor */
 
-  /* Otras propiedades de estilo, como colores de texto y márgenes */
+}
+
+.content-login {
+  margin-top: 0px;
+  background-image: url('./Img/fondo.png'); /* Asegúrate de ajustar la ruta al archivo de imagen */
+  background-size: cover
 }

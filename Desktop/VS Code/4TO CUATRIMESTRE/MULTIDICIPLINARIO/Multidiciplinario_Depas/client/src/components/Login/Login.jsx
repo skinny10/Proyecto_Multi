@@ -1,7 +1,7 @@
 
 import HeaderLogin from "./HeaderLogin/HeaderLogin";
 import FormLogin from "./FormLogin/FormLogin";
-import '../../index.css';
+import '../../assets/Fondo.css';
 
 
  function Login(){
@@ -9,7 +9,7 @@ import '../../index.css';
 
   return (
     <>
-      <div>
+      <div className="content-login" >
         <HeaderLogin/>
         <FormLogin/>
       </div>

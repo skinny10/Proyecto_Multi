@@ -8,7 +8,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../../../schemas/auth";
 import Swal from 'sweetalert2'; 
 
+
  function FormLogin(){
+  
     const {
         register,
         handleSubmit,
@@ -23,8 +25,8 @@ import Swal from 'sweetalert2';
         signin(data);
         Swal.fire({
           icon: 'success',
-          title: 'Success!',
-          text: 'You have successfully logged in.',
+          title: '¡Éxito!',
+          text: 'Has iniciado sesión correctamente.',
         });
       };
     
@@ -47,22 +49,28 @@ import Swal from 'sweetalert2';
 
             <h1 className="text-2xl font-bold text-white ">Login</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
               <Label htmlFor="email">Correo Electronico</Label>
-              <Input label="Write your email" type="email"
+              <Input 
+              className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              label="Write your email" type="email"
                      name="email"  placeholder="youremail@domain.tld"
                 {...register("email", { required: true })}
               />
               <p>{errors.email?.message}</p>
 
               <Label htmlFor="password">Contraseña</Label>
-              <Input   type="password"   name="password"
+              <Input  
+              className="rounded border border-gray-200 text-sm w-full font-normal leading-[18px] text-black tracking-[0px] appearance-none block h-8 m-0 p-[11px] focus:ring-2 ring-offset-2  ring-gray-900 outline-0"
+              type="password"   name="password"
                        placeholder="Write your password"
               {...register("password", { required: true, minLength: 6 })}
                /> 
               <p>{errors.password?.message}</p>
 
-              <Button>Login</Button>
+            <div className="text-white text-right m-1">
+            <Button  >Login</Button>
+            </div>
 
               <p className="mt-10 text-center text-sm text-gray-50">
                 Aun no tienes una cuenta?{' '}
@@ -77,4 +85,4 @@ import Swal from 'sweetalert2';
     )
 }
 
-export default FormLogin
+export default FormLogin;

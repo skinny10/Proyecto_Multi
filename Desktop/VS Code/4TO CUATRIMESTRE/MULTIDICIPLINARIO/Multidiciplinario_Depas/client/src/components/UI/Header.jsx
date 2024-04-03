@@ -21,7 +21,7 @@ function classNames(...classes) {
   console.log(isAuthenticated, user)
 
   return (
-    <Disclosure as="nav" className="bg-gray-700 shadow-xl  shadow-yellow-200/70 ">
+    <Disclosure as="nav" className="bg-gray-700 shadow-xl  ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -40,11 +40,13 @@ function classNames(...classes) {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
+                  <Link to={"/home"}>
                   <img
                     className="h-8 w-auto  rounded-lg"
                     src={Logo}
                     alt="Your Company"
                   />
+                  </Link> 
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -107,7 +109,7 @@ function classNames(...classes) {
                       <Menu.Item>
                         {({ active }) => (
                           <Link
-                          to="/EditPerfil" onClick={() => logout()}
+                          to="/perfil"
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Perfil

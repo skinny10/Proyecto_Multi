@@ -1,5 +1,6 @@
 
 import Logo from '../../../assets/Img//Logo.png'
+import "../../../assets/Fondo.css"
 
  function HeaderRegister(){
     

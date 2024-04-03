@@ -12,7 +12,7 @@ export const register = async (req, res) => {
 
     if (userFound)
       return res.status(400).json({
-        message: ["The email is already in use"],
+        message: ["El correo electronico ya esta en uso!"],
       });
 
     // hashing the password
@@ -114,10 +114,6 @@ export const logout = async (req, res) => {
   return res.sendStatus(200);
 };
 
-
-
-
-
   // Obtener la lista de usuarios
   export const getUsers = async (req, res) => {
     try {
@@ -129,8 +125,7 @@ export const logout = async (req, res) => {
       res.status(500).json({ message: 'Error al obtener la lista de usuarios' });
     }
   };
-  
-  
+
   
   // Actualizar la información de un usuario
   export const updateUser = async (req, res) => {
@@ -146,7 +141,6 @@ export const logout = async (req, res) => {
       res.status(500).json({ message: 'Error al actualizar el usuario' });
     }
   };
-  
   
   
   // Eliminar un usuario
@@ -180,4 +174,26 @@ export const logout = async (req, res) => {
       res.status(500).json({ message: 'Error al obtener la información del usuario' });
     }
   };
+
+
+  
+  // Ruta para subir la imagen de perfil
+export const uploadProfileImage = async (req, res) => {
+  try {
+    // Verificar si se ha subido una imagen
+    if (!req.file) {
+      return res.status(400).json({ error: 'No se ha seleccionado ninguna imagen' });
+    }
+
+    // Obtener el usuario autenticado
+    const userId = req.user._id; // Asumiendo que tienes middleware de autenticación
+
+    // Actualizar la imagen de perfil del usuario
+    const user = await User.findByIdAndUpdate(userId, { profileImage: req.file.path }, { new: true });
+
+    res.json({ user });
+  } catch (error) {
+    res.status(500).json({ error: 'Error al subir la imagen de perfil' });
+  }
+};
   
