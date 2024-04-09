@@ -2,9 +2,10 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom';  
-import Logo from '../../assets/Img/Logo.png'
+import Logo from '../../assets/Img/Logo.png';
 import { useAuth } from '../../context/authContext';
-import cro from "../../assets/Img/cro.jpeg"
+import cro from "../../assets/Img/cro.jpeg";
+
 
 const navigation = [
   { name: 'HomeSchool', to: '/Home', current: true },
@@ -21,7 +22,7 @@ function classNames(...classes) {
   console.log(isAuthenticated, user)
 
   return (
-    <Disclosure as="nav" className="bg-gray-700 shadow-xl  ">
+    <Disclosure as="nav" className="bg-sky-950 shadow-xl  ">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -69,7 +70,7 @@ function classNames(...classes) {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <div>
             <p className="text-white text-base"> Bienvenido {isAuthenticated && user && user.username} </p>
-                  {/* <p className="text-white text-base"> Bienvenido <>{user.username}</> </p> */}
+
             </div>
                 <Menu as="div" className="relative ml-3">
                 <div>

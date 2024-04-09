@@ -8,6 +8,7 @@ import logo from '../../../assets/Img/Logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'; 
 
+
 function FormRegister (){
    
   const {
@@ -20,14 +21,33 @@ function FormRegister (){
   const { signup, errors: registerErrors, isAuthenticated  } = useAuth();
   const navigate = useNavigate ();
 
-  const onSubmit = (data) => {
-    signup(data);
+
+const onSubmit = (data) => {
+  signup(data);
+  Swal.fire({
+    icon: 'success',
+    title: '¡Éxito!',
+    text: 'Te has registrado exitosamente!',
+  }).then(() => {
     Swal.fire({
-      icon: 'success',
-      title: '¡Éxito!',
-      text: 'Te has registrado exitosamente!',
+      title: "Agrega una foto de perfil!, ve al apartado de perfil.",
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInUp
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutDown
+          animate__faster
+        `
+      }
     });
-  };
+  });
+};
 
   useEffect(() => {
     if (isAuthenticated) {

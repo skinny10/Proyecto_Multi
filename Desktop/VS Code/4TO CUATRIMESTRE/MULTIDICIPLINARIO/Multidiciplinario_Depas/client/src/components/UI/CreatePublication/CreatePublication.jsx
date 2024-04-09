@@ -2,8 +2,6 @@
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import Swal from "sweetalert2";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faTimes } from "@fortawesome/free-solid-svg-icons"; // Importa el ícono de la X
 import "./CreatePublication.css";
 import cro from "../../../assets/Img/cro.jpeg";
 import images from "../../../assets/Img/IconoImages.png";

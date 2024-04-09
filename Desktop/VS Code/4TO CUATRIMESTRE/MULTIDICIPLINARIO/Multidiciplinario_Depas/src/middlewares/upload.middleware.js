@@ -3,15 +3,15 @@ import path from 'path';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Carpeta donde se almacenarán las imágenes
+    cb(null, 'uploads/'); 
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + path.extname(file.originalname)); // Nombre de archivo único
+    cb(null, Date.now() + path.extname(file.originalname)); 
   }
 });
 
+
 const fileFilter = (req, file, cb) => {
-    // Filtrar solo archivos de imagen
     const filetypes = /jpeg|jpg/;
     const mimetype = filetypes.test(file.mimetype);
     const extname = filetypes.test(path.extname(file.originalname));
